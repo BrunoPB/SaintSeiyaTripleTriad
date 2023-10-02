@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb4cb3bedyfo4"]
+
+[ext_resource type="Script" path="res://scripts/card_base.gd" id="1_iluw7"]
+[ext_resource type="Texture2D" uid="uid://bjkkkq2t04yty" path="res://assets/card_images/DivineSeiya.jpg" id="1_ul2lc"]
+[ext_resource type="Theme" uid="uid://bs0sulljmstjq" path="res://themes/card_theme.tres" id="1_xch5b"]
+[ext_resource type="Script" path="res://scripts/card_control.gd" id="3_rmfcw"]
+
+[node name="CardBase" type="Node2D"]
+script = ExtResource("1_iluw7")
+
+[node name="Card" type="PanelContainer" parent="."]
+offset_right = 120.0
+offset_bottom = 160.0
+theme = ExtResource("1_xch5b")
+script = ExtResource("3_rmfcw")
+
+[node name="Image" type="TextureRect" parent="Card"]
+layout_mode = 2
+texture = ExtResource("1_ul2lc")
+expand_mode = 3
+
+[node name="ValuesHContainer" type="HBoxContainer" parent="Card"]
+layout_mode = 2
+
+[node name="West" type="Label" parent="Card/ValuesHContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Card/ValuesHContainer"]
+layout_mode = 2
+
+[node name="North" type="Label" parent="Card/ValuesHContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "10"
+horizontal_alignment = 1
+
+[node name="South" type="Label" parent="Card/ValuesHContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="East" type="Label" parent="Card/ValuesHContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10"
+horizontal_alignment = 2

@@ -1,0 +1,83 @@
+[
+	{
+		"id": "1",
+		"name": "Seiya",
+		"image": "Seiya.jpg",
+		"north": 2,
+		"east": 1,
+		"south": 2,
+		"west": 3
+	},
+	{
+		"id": "12",
+		"name": "Aldebaran",
+		"image": "Aldebaran.jpg",
+		"north": 6,
+		"east": 7,
+		"south": 8,
+		"west": 7
+	},
+	{
+		"id": "2",
+		"name": "Shiryu",
+		"image": "Shiryu.jpg",
+		"north": 2,
+		"east": 1,
+		"south": 1,
+		"west": 3
+	},
+	{
+		"id": "3",
+		"name": "Hyoga",
+		"image": "Hyoga.jpg",
+		"north": 2,
+		"east": 2,
+		"south": 1,
+		"west": 2
+	},
+	{
+		"id": "4",
+		"name": "Shun",
+		"image": "Shun.jpg",
+		"north": 1,
+		"east": 1,
+		"south": 2,
+		"west": 2
+	},
+	{
+		"id": "5",
+		"name": "Divine Seiya",
+		"image": "DivineSeiya.jpg",
+		"north": 9,
+		"east": 10,
+		"south": 8,
+		"west": 10
+	},
+	{
+		"id": "6",
+		"name": "Athena",
+		"image": "Athena.jpg",
+		"north": 8,
+		"east": 8,
+		"south": 8,
+		"west": 8
+	},
+	{
+		"id": "7",
+		"name": "Shaka",
+		"image": "Shaka.jpg",
+		"north": 10,
+		"east": 5,
+		"south": 6,
+		"west": 6
+	},
+	{
+		"id": "8",
+		"name": "Hades",
+		"image": "Hades.jpg",
+		"north": 10,
+		"east": 9,
+		"south": 10,
+		"west": 9
+	}
+]

@@ -1,0 +1,5 @@
+res://scenes/game.tscn
+res://themes/card_theme.tres
+res://themes/table_slot_free.tres
+res://scenes/table_card_base.tscn
+res://scenes/deck_card_base.tscn

@@ -1,0 +1,134 @@
+[gd_scene load_steps=7 format=3 uid="uid://c26kphb2cr3fu"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_0ihwn"]
+[ext_resource type="Theme" uid="uid://bcasyxd852hjh" path="res://themes/table_slot.tres" id="1_4hoot"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpd4x"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 14
+border_width_top = 14
+border_width_right = 14
+border_width_bottom = 14
+border_color = Color(0.543166, 0.464163, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_bejtg"]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0.545098, 0.462745, 0, 1)
+Label/constants/outline_size = 23
+Label/font_sizes/font_size = 50
+Label/styles/normal = SubResource("StyleBoxFlat_jpd4x")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uncyw"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.294118, 0.294118, 0.294118, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_aqj2q"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_uncyw")
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ihwn")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0588235, 0.0941176, 0.247059, 1)
+
+[node name="VerticalLayout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_right = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Action" type="Label" parent="VerticalLayout"]
+layout_mode = 2
+theme = SubResource("Theme_bejtg")
+text = "YOUR TURN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Table" type="GridContainer" parent="VerticalLayout"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 3
+
+[node name="Slot1" type="PanelContainer" parent="VerticalLayout/Table"]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 2
+theme = ExtResource("1_4hoot")
+
+[node name="Slot2" type="PanelContainer" parent="VerticalLayout/Table"]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 2
+theme = ExtResource("1_4hoot")
+
+[node name="Slot3" type="PanelContainer" parent="VerticalLayout/Table"]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 2
+theme = ExtResource("1_4hoot")
+
+[node name="Slot4" type="PanelContainer" parent="VerticalLayout/Table"]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 2
+theme = ExtResource("1_4hoot")
+
+[node name="Slot5" type="PanelContainer" parent="VerticalLayout/Table"]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 2
+theme = ExtResource("1_4hoot")
+
+[node name="Slot6" type="PanelContainer" parent="VerticalLayout/Table"]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 2
+theme = ExtResource("1_4hoot")
+
+[node name="Slot7" type="PanelContainer" parent="VerticalLayout/Table"]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 2
+theme = ExtResource("1_4hoot")
+
+[node name="Slot8" type="PanelContainer" parent="VerticalLayout/Table"]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 2
+theme = ExtResource("1_4hoot")
+
+[node name="Slot9" type="PanelContainer" parent="VerticalLayout/Table"]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 2
+theme = ExtResource("1_4hoot")
+
+[node name="DeckArea" type="PanelContainer" parent="VerticalLayout"]
+custom_minimum_size = Vector2(420, 240)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_aqj2q")
