@@ -15,3 +15,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 	#pass
+
+# For SlotCardBase only
+func _on_slot_area_mouse_entered():
+	get_node("/root/MainMenu/Layout/Content/DeckMenu").target_card = self

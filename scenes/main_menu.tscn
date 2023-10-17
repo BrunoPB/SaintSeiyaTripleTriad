@@ -1,0 +1,254 @@
+[gd_scene load_steps=18 format=3 uid="uid://dkkmm86tnrp20"]
+
+[ext_resource type="Texture2D" uid="uid://cwc3iqpwvg35y" path="res://assets/coins.png" id="1_1j6x6"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_afckg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jajlf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.780392, 0.780392, 0.0117647, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="Theme" id="Theme_f3hig"]
+Label/colors/font_color = Color(0.901961, 0.807843, 0, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 5
+Label/font_sizes/font_size = 30
+Label/styles/normal = SubResource("StyleBoxFlat_jajlf")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ucq2p"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.243137, 0.243137, 0.243137, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Theme" id="Theme_yrarw"]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 5
+Label/font_sizes/font_size = 30
+Label/styles/normal = SubResource("StyleBoxFlat_ucq2p")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwkej"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.305882, 0.305882, 0.305882, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="Theme" id="Theme_fvbaa"]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 5
+Label/font_sizes/font_size = 22
+Label/styles/normal = SubResource("StyleBoxFlat_cwkej")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nhg7"]
+atlas = ExtResource("1_1j6x6")
+region = Rect2(0, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2jvk"]
+atlas = ExtResource("1_1j6x6")
+region = Rect2(170, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjg5a"]
+atlas = ExtResource("1_1j6x6")
+region = Rect2(340, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvx7j"]
+atlas = ExtResource("1_1j6x6")
+region = Rect2(510, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_birly"]
+atlas = ExtResource("1_1j6x6")
+region = Rect2(680, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej0fd"]
+atlas = ExtResource("1_1j6x6")
+region = Rect2(850, 0, 170, 170)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ox4px"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nhg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2jvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjg5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvx7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_birly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ej0fd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4y6rw"]
+bg_color = Color(0, 0, 0, 0.278431)
+border_width_left = 1
+border_width_right = 1
+border_color = Color(0, 0, 0, 0.701961)
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_odvwd"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 5
+Button/font_sizes/font_size = 24
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = SubResource("StyleBoxFlat_4y6rw")
+Button/styles/pressed = null
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_afckg")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0588235, 0.0941176, 0.247059, 1)
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Header" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Layout/Header"]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_bottom = 15
+
+[node name="Title" type="Label" parent="Layout/Header/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_f3hig")
+text = "SAINT SEIYA TRIPLE TRIAD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerName" type="Label" parent="Layout/Header"]
+layout_mode = 2
+theme = SubResource("Theme_yrarw")
+text = "IKazart"
+horizontal_alignment = 1
+
+[node name="HeaderInfos" type="HBoxContainer" parent="Layout/Header"]
+layout_mode = 2
+theme = SubResource("Theme_fvbaa")
+alignment = 1
+
+[node name="CoinsMargin" type="MarginContainer" parent="Layout/Header/HeaderInfos"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_bottom = 20
+
+[node name="Coins" type="Label" parent="Layout/Header/HeaderInfos/CoinsMargin"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "500
+"
+
+[node name="CoinsAnim" type="AnimatedSprite2D" parent="Layout/Header/HeaderInfos/CoinsMargin"]
+position = Vector2(37, 19)
+scale = Vector2(0.217647, 0.210162)
+sprite_frames = SubResource("SpriteFrames_ox4px")
+
+[node name="CardsMargin" type="MarginContainer" parent="Layout/Header/HeaderInfos"]
+layout_mode = 2
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="NofCards" type="Label" parent="Layout/Header/HeaderInfos/CardsMargin"]
+layout_mode = 2
+text = "12 cards"
+
+[node name="Content" type="MarginContainer" parent="Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Footer" type="MarginContainer" parent="Layout"]
+layout_mode = 2
+
+[node name="FooterLayout" type="HBoxContainer" parent="Layout/Footer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme = SubResource("Theme_odvwd")
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="ShopButton" type="Button" parent="Layout/Footer/FooterLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Shop"
+
+[node name="HomeButton" type="Button" parent="Layout/Footer/FooterLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "Home"
+
+[node name="DeckButton" type="Button" parent="Layout/Footer/FooterLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Deck"
+
+[connection signal="pressed" from="Layout/Footer/FooterLayout/ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="Layout/Footer/FooterLayout/HomeButton" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="Layout/Footer/FooterLayout/DeckButton" to="." method="_on_deck_button_pressed"]

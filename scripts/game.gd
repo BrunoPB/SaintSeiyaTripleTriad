@@ -1,11 +1,17 @@
 extends Control
 
-@onready var play = get_node("/root/Play")
-const deckCardBase = preload("res://scenes/deck_card_base.tscn")
-const tableCardBase = preload("res://scenes/table_card_base.tscn")
+var play
+@onready var player = get_node("/root/Player")
+@onready var cards_data = get_node("/root/CardsData")
+@onready var player_timer = $PlayerTimer as Timer
+@onready var action_label = $VerticalLayout/Action as Label
+const deckCardBase = preload("res://scenes/drag_card_base.tscn")
+const tableCardBase = preload("res://scenes/static_card_base.tscn")
+const pause_screen = preload("res://scenes/pause.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	play = Play.new(player.deck.duplicate(),cards_data,player_timer,action_label)
 	buildDeckGui()
 	buildTableGui()
 	game()
@@ -62,6 +68,12 @@ func delete_children(node):
 	#pass
 
 func gameEnded():
+	var number_of_cards_in_deck = play.deck.filter(func(c): return c != null).size()
+	var number_of_cards_in_opponent_deck = play.opponentDeck.filter(func(c): return c != null).size()
+	if  number_of_cards_in_deck == 0:
+		return true
+	if number_of_cards_in_opponent_deck == 0:
+		return true
 	for slot in play.table:
 		if slot.has(null):
 			return false
@@ -71,17 +83,27 @@ func game():
 	while(not gameEnded()):
 		if play.turn:
 			var time = 30
-			$PlayerTimer.start(30)
+			$PlayerTimer.start(time)
 			while(time > 0 and not $PlayerTimer.is_stopped()):
 				$VerticalLayout/Action.text = "YOUR TURN (" + str(int(time)) + ")"
-				await get_tree().create_timer(0.1).timeout
+				$AuxTimer.start(0.1)
+				await $AuxTimer.timeout
 				time -= 0.1
 			play.turn = false
 		else:
 			$VerticalLayout/Action.text = "OPPONENT TURN"
-			await get_tree().create_timer(2).timeout
+			$AuxTimer.start(2)
+			await $AuxTimer.timeout
 			play.botPlay()
 			play.turn = true
 		buildDeckGui()
 		buildTableGui()
-	# Overlay message : victory or defeat
+	call_game_end_screen()
+
+func call_game_end_screen():
+	var game_end = load("res://scenes/game_end.tscn").instantiate()
+	add_child(game_end)
+
+func _on_pause_button_pressed():
+	var pause_scene = pause_screen.instantiate()
+	add_child(pause_scene)

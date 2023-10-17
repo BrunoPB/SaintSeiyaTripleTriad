@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1lil8smg2d3i"]
+
+[ext_resource type="Script" path="res://scripts/home_menu.gd" id="1_fxjm6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w15sr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.294118, 0.294118, 0.294118, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_d6d6j"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_w15sr")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l72g7"]
+bg_color = Color(1, 0.858824, 0.113725, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_3yptp"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 5
+Button/font_sizes/font_size = 56
+Button/styles/disabled = SubResource("StyleBoxFlat_l72g7")
+Button/styles/focus = SubResource("StyleBoxFlat_l72g7")
+Button/styles/hover = SubResource("StyleBoxFlat_l72g7")
+Button/styles/normal = SubResource("StyleBoxFlat_l72g7")
+
+[node name="HomeMenu" type="Node2D"]
+script = ExtResource("1_fxjm6")
+
+[node name="Container" type="MarginContainer" parent="."]
+offset_right = 430.0
+offset_bottom = 560.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="DeckMargin" type="MarginContainer" parent="Container/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 30
+
+[node name="DeckArea" type="PanelContainer" parent="Container/VBoxContainer/DeckMargin"]
+custom_minimum_size = Vector2(430, 380)
+layout_mode = 2
+theme = SubResource("Theme_d6d6j")
+
+[node name="PlayMargin" type="MarginContainer" parent="Container/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="Container/VBoxContainer/PlayMargin"]
+custom_minimum_size = Vector2(260, 110)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_3yptp")
+text = "PLAY"
+
+[connection signal="pressed" from="Container/VBoxContainer/PlayMargin/PlayButton" to="." method="_on_play_button_pressed"]

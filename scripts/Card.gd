@@ -16,7 +16,9 @@ func _init(_id:String,_name:String,_file_path:String,_north:int,_east:int,_south
 	self.east = _east
 	self.south = _south
 	self.west = _west
-	pass
 
 func total_power():
 	return self.north + self.east + self.south + self.west
+
+func price():
+	return total_power()*10

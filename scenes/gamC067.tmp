@@ -1,0 +1,236 @@
+[gd_scene load_steps=11 format=3 uid="uid://c26kphb2cr3fu"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_0ihwn"]
+[ext_resource type="Theme" uid="uid://bcasyxd852hjh" path="res://themes/table_slot_free.tres" id="2_47ntc"]
+[ext_resource type="Texture2D" uid="uid://bfxabhlfcfxsk" path="res://assets/pauseIcon.png" id="2_x5ijf"]
+[ext_resource type="Script" path="res://scripts/slot_drop.gd" id="3_87lb1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpd4x"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 14
+border_width_top = 14
+border_width_right = 14
+border_width_bottom = 14
+border_color = Color(0.543166, 0.464163, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_bejtg"]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0.545098, 0.462745, 0, 1)
+Label/constants/outline_size = 23
+Label/font_sizes/font_size = 45
+Label/styles/normal = SubResource("StyleBoxFlat_jpd4x")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2u0ux"]
+size = Vector2(130, 170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xo70"]
+size = Vector2(398, 518)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uncyw"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.294118, 0.294118, 0.294118, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_aqj2q"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_uncyw")
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ihwn")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0588235, 0.0941176, 0.247059, 1)
+
+[node name="VerticalLayout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_right = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="PauseButton" type="TextureButton" parent="VerticalLayout"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture_normal = ExtResource("2_x5ijf")
+
+[node name="Action" type="Label" parent="VerticalLayout"]
+layout_mode = 2
+theme = SubResource("Theme_bejtg")
+text = "YOUR TURN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Table" type="GridContainer" parent="VerticalLayout"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+columns = 3
+
+[node name="Slot1" type="PanelContainer" parent="VerticalLayout/Table"]
+custom_minimum_size = Vector2(130, 170)
+layout_mode = 2
+theme = ExtResource("2_47ntc")
+script = ExtResource("3_87lb1")
+
+[node name="SlotArea" type="Area2D" parent="VerticalLayout/Table/Slot1"]
+
+[node name="SlotCollision" type="CollisionShape2D" parent="VerticalLayout/Table/Slot1/SlotArea"]
+position = Vector2(65, 85)
+shape = SubResource("RectangleShape2D_2u0ux")
+
+[node name="Slot2" type="PanelContainer" parent="VerticalLayout/Table"]
+custom_minimum_size = Vector2(130, 170)
+layout_mode = 2
+theme = ExtResource("2_47ntc")
+script = ExtResource("3_87lb1")
+
+[node name="SlotArea" type="Area2D" parent="VerticalLayout/Table/Slot2"]
+
+[node name="SlotCollision" type="CollisionShape2D" parent="VerticalLayout/Table/Slot2/SlotArea"]
+position = Vector2(65, 85)
+shape = SubResource("RectangleShape2D_2u0ux")
+
+[node name="Slot3" type="PanelContainer" parent="VerticalLayout/Table"]
+custom_minimum_size = Vector2(130, 170)
+layout_mode = 2
+theme = ExtResource("2_47ntc")
+script = ExtResource("3_87lb1")
+
+[node name="SlotArea" type="Area2D" parent="VerticalLayout/Table/Slot3"]
+
+[node name="SlotCollision" type="CollisionShape2D" parent="VerticalLayout/Table/Slot3/SlotArea"]
+position = Vector2(65, 85)
+shape = SubResource("RectangleShape2D_2u0ux")
+
+[node name="Slot4" type="PanelContainer" parent="VerticalLayout/Table"]
+custom_minimum_size = Vector2(130, 170)
+layout_mode = 2
+theme = ExtResource("2_47ntc")
+script = ExtResource("3_87lb1")
+
+[node name="SlotArea" type="Area2D" parent="VerticalLayout/Table/Slot4"]
+
+[node name="SlotCollision" type="CollisionShape2D" parent="VerticalLayout/Table/Slot4/SlotArea"]
+position = Vector2(65, 85)
+shape = SubResource("RectangleShape2D_2u0ux")
+
+[node name="Slot5" type="PanelContainer" parent="VerticalLayout/Table"]
+custom_minimum_size = Vector2(130, 170)
+layout_mode = 2
+theme = ExtResource("2_47ntc")
+script = ExtResource("3_87lb1")
+
+[node name="SlotArea" type="Area2D" parent="VerticalLayout/Table/Slot5"]
+
+[node name="SlotCollision" type="CollisionShape2D" parent="VerticalLayout/Table/Slot5/SlotArea"]
+position = Vector2(65, 85)
+shape = SubResource("RectangleShape2D_2u0ux")
+
+[node name="Slot6" type="PanelContainer" parent="VerticalLayout/Table"]
+custom_minimum_size = Vector2(130, 170)
+layout_mode = 2
+theme = ExtResource("2_47ntc")
+script = ExtResource("3_87lb1")
+
+[node name="SlotArea" type="Area2D" parent="VerticalLayout/Table/Slot6"]
+
+[node name="SlotCollision" type="CollisionShape2D" parent="VerticalLayout/Table/Slot6/SlotArea"]
+position = Vector2(65, 85)
+shape = SubResource("RectangleShape2D_2u0ux")
+
+[node name="Slot7" type="PanelContainer" parent="VerticalLayout/Table"]
+custom_minimum_size = Vector2(130, 170)
+layout_mode = 2
+theme = ExtResource("2_47ntc")
+script = ExtResource("3_87lb1")
+
+[node name="SlotArea" type="Area2D" parent="VerticalLayout/Table/Slot7"]
+
+[node name="SlotCollision" type="CollisionShape2D" parent="VerticalLayout/Table/Slot7/SlotArea"]
+position = Vector2(65, 85)
+shape = SubResource("RectangleShape2D_2u0ux")
+
+[node name="Slot8" type="PanelContainer" parent="VerticalLayout/Table"]
+custom_minimum_size = Vector2(130, 170)
+layout_mode = 2
+theme = ExtResource("2_47ntc")
+script = ExtResource("3_87lb1")
+
+[node name="SlotArea" type="Area2D" parent="VerticalLayout/Table/Slot8"]
+
+[node name="SlotCollision" type="CollisionShape2D" parent="VerticalLayout/Table/Slot8/SlotArea"]
+position = Vector2(65, 85)
+shape = SubResource("RectangleShape2D_2u0ux")
+
+[node name="Slot9" type="PanelContainer" parent="VerticalLayout/Table"]
+custom_minimum_size = Vector2(130, 170)
+layout_mode = 2
+theme = ExtResource("2_47ntc")
+script = ExtResource("3_87lb1")
+
+[node name="SlotArea" type="Area2D" parent="VerticalLayout/Table/Slot9"]
+
+[node name="SlotCollision" type="CollisionShape2D" parent="VerticalLayout/Table/Slot9/SlotArea"]
+position = Vector2(65, 85)
+shape = SubResource("RectangleShape2D_2u0ux")
+
+[node name="TableArea" type="Area2D" parent="VerticalLayout/Table"]
+
+[node name="TableCollision" type="CollisionShape2D" parent="VerticalLayout/Table/TableArea"]
+position = Vector2(199, 259)
+shape = SubResource("RectangleShape2D_3xo70")
+
+[node name="DeckArea" type="PanelContainer" parent="VerticalLayout"]
+custom_minimum_size = Vector2(430, 280)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_aqj2q")
+
+[node name="PlayerTimer" type="Timer" parent="."]
+
+[node name="MessageTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="pressed" from="VerticalLayout/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="mouse_entered" from="VerticalLayout/Table/Slot1/SlotArea" to="VerticalLayout/Table/Slot1" method="_on_slot_area_mouse_entered"]
+[connection signal="mouse_entered" from="VerticalLayout/Table/Slot2/SlotArea" to="VerticalLayout/Table/Slot2" method="_on_slot_area_mouse_entered"]
+[connection signal="mouse_entered" from="VerticalLayout/Table/Slot3/SlotArea" to="VerticalLayout/Table/Slot3" method="_on_slot_area_mouse_entered"]
+[connection signal="mouse_entered" from="VerticalLayout/Table/Slot4/SlotArea" to="VerticalLayout/Table/Slot4" method="_on_slot_area_mouse_entered"]
+[connection signal="mouse_entered" from="VerticalLayout/Table/Slot5/SlotArea" to="VerticalLayout/Table/Slot5" method="_on_slot_area_mouse_entered"]
+[connection signal="mouse_entered" from="VerticalLayout/Table/Slot6/SlotArea" to="VerticalLayout/Table/Slot6" method="_on_slot_area_mouse_entered"]
+[connection signal="mouse_entered" from="VerticalLayout/Table/Slot7/SlotArea" to="VerticalLayout/Table/Slot7" method="_on_slot_area_mouse_entered"]
+[connection signal="mouse_entered" from="VerticalLayout/Table/Slot8/SlotArea" to="VerticalLayout/Table/Slot8" method="_on_slot_area_mouse_entered"]
+[connection signal="mouse_entered" from="VerticalLayout/Table/Slot9/SlotArea" to="VerticalLayout/Table/Slot9" method="_on_slot_area_mouse_entered"]
+[connection signal="mouse_exited" from="VerticalLayout/Table/TableArea" to="VerticalLayout/Table/Slot1" method="_on_table_area_mouse_exited"]

@@ -1,5 +1,6 @@
-res://scenes/game.tscn
+res://scenes/home_menu.tscn
+res://scripts/card_drag.gd
 res://themes/card_theme.tres
+res://themes/overlay.tres
+res://themes/pause_button.tres
 res://themes/table_slot_free.tres
-res://scenes/table_card_base.tscn
-res://scenes/deck_card_base.tscn

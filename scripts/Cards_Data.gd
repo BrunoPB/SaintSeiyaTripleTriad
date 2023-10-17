@@ -1,9 +1,9 @@
-class_name Cards_Data
+extends Node
 
 var data_path : String = "res://data/cardsData.json"
-static var data : Array
+var data : Array
 
-func _init():
+func _ready():
 	if FileAccess.file_exists(data_path):
 		var dataFile = FileAccess.open(data_path,FileAccess.READ)
 		var parsedResult = JSON.parse_string(dataFile.get_as_text())

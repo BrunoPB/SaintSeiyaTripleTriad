@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://1urltxi0pis4"]
+
+[ext_resource type="Script" path="res://scripts/shop_menu.gd" id="1_uht4q"]
+
+[node name="ShopMenu" type="Node2D"]
+script = ExtResource("1_uht4q")
+
+[node name="Container" type="MarginContainer" parent="."]
+offset_right = 450.0
+offset_bottom = 634.0
+
+[node name="Scroll" type="ScrollContainer" parent="Container"]
+layout_mode = 2
+follow_focus = true
+vertical_scroll_mode = 3
+scroll_deadzone = 160
+
+[node name="ScrollOffset" type="MarginContainer" parent="Container/Scroll"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 168
+
+[node name="List" type="VBoxContainer" parent="Container/Scroll/ScrollOffset"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 160

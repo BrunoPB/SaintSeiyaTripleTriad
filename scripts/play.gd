@@ -1,19 +1,21 @@
-extends Node
+class_name Play
 
 var turn : bool
 var deck : Array
 var table : Array = Array()
-var cards_data : Cards_Data = Cards_Data.new()
-@onready var player_timer = get_node("/root/Game/PlayerTimer") as Timer
-@onready var message_timer = get_node("/root/Game/MessageTimer") as Timer
-@onready var action_label = get_node("/root/Game/VerticalLayout/Action") as Label
+var cards_data : CardsData
+var player_timer : Timer
+var action_label : Label
 var target_slot = null
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _init(_deck:Array,_cards_data:CardsData,_player_timer:Timer,_action_label:Label):
+	deck = _deck
+	cards_data = _cards_data
+	player_timer = _player_timer
+	action_label = _action_label
 	startTable()
 	startTurn()
-	startPlayerDeck()
 	startOpponentDeck()
 
 func startTable():
@@ -26,9 +28,6 @@ func startTable():
 
 func startTurn():
 	turn = randi_range(0,1) == 0
-
-func startPlayerDeck():
-	deck = cards_data.takeRandom(5)
 
 func canPlaceCardAtSlot():
 	if not turn or target_slot == null:
@@ -89,6 +88,44 @@ func process_action(x,y,player_index):
 			table[x-1][y].owner = player_index
 			domined_cards += 1
 
+func get_game_score():
+	var player_score = 0
+	var opponent_score = 0
+	for y in range(table.size()):
+		for x in range(table.size()):
+			if table[x][y] == null:
+				continue
+			if table[x][y].owner == 0:
+				player_score += 1
+			else:
+				opponent_score += 1
+	return {
+		"player_score" : player_score,
+		"opponent_score" : opponent_score
+	}
+
+func is_player_game_winner():
+	var game_score = get_game_score()
+	return game_score.player_score > game_score.opponent_score
+
+func calculate_coins():
+	var avg_power = get_average_power_in_table()
+	var game_score = get_game_score()
+	var multiplier = 1
+	if is_player_game_winner():
+		multiplier = game_score.player_score
+	else:
+		multiplier = game_score.opponent_score * -1
+	return avg_power * multiplier
+
+func get_average_power_in_table():
+	var sum = 0
+	for y in range(table.size()):
+		for x in range(table.size()):
+			if table[x][y] != null:
+				sum += table[x][y].card.total_power()
+	return sum/((3*3) * 4)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 	#pass
@@ -99,7 +136,17 @@ func process_action(x,y,player_index):
 var opponentDeck : Array = []
 
 func startOpponentDeck():
-	opponentDeck = cards_data.takeRandom(5)
+	var player_deck_avg = 0
+	for card in deck:
+		player_deck_avg += card.total_power()
+	player_deck_avg /= 5
+	var pick_up_cards = cards_data.data.duplicate()
+	pick_up_cards.shuffle()
+	for card in pick_up_cards:
+		if card.total_power() <= player_deck_avg + 9:
+			opponentDeck.append(card)
+		if opponentDeck.size() == 5:
+			break
 
 func botPlay():
 	# Card

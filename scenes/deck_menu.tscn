@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4ai7m4jxm2a0"]
+
+[ext_resource type="Script" path="res://scripts/deck_menu.gd" id="1_gmvyw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1davq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.294118, 0.294118, 0.294118, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_krb5e"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_1davq")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rwoq"]
+size = Vector2(426.5, 374)
+
+[node name="DeckMenu" type="Node2D"]
+script = ExtResource("1_gmvyw")
+
+[node name="Container" type="MarginContainer" parent="."]
+offset_right = 450.0
+offset_bottom = 634.0
+
+[node name="Layout" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Scroll Area" type="MarginContainer" parent="Container/Layout"]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="Container/Layout/Scroll Area"]
+layout_mode = 2
+follow_focus = true
+vertical_scroll_mode = 3
+scroll_deadzone = 160
+
+[node name="ScrollOffset" type="MarginContainer" parent="Container/Layout/Scroll Area/Scroll"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 168
+
+[node name="List" type="VBoxContainer" parent="Container/Layout/Scroll Area/Scroll/ScrollOffset"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 160
+
+[node name="DeckMargin" type="MarginContainer" parent="Container/Layout"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="DeckArea" type="PanelContainer" parent="Container/Layout/DeckMargin"]
+custom_minimum_size = Vector2(430, 380)
+layout_mode = 2
+theme = SubResource("Theme_krb5e")
+
+[node name="DeckCollision" type="Area2D" parent="Container/Layout/DeckMargin"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Layout/DeckMargin/DeckCollision"]
+position = Vector2(215.75, 190)
+shape = SubResource("RectangleShape2D_2rwoq")
+
+[connection signal="mouse_exited" from="Container/Layout/DeckMargin/DeckCollision" to="." method="_on_deck_collision_mouse_exited"]

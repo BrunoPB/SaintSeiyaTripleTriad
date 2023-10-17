@@ -1,0 +1,119 @@
+[gd_scene load_steps=8 format=3 uid="uid://dqclfqbur8k0x"]
+
+[ext_resource type="Script" path="res://scripts/buy_card_pop_up.gd" id="1_smlhd"]
+[ext_resource type="Theme" uid="uid://de5fwt1vtmxhx" path="res://themes/overlay.tres" id="2_lpytq"]
+[ext_resource type="Theme" uid="uid://j0sxke1q4f1x" path="res://themes/pause_button.tres" id="3_tard4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x75n1"]
+bg_color = Color(0, 0.0941176, 0.321569, 0.592157)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 20
+
+[sub_resource type="Theme" id="Theme_h4dws"]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 20
+Label/font_sizes/font_size = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7f1lw"]
+bg_color = Color(0.784314, 0.72549, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Theme" id="Theme_8dntf"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 8
+Button/font_sizes/font_size = 36
+Button/styles/normal = SubResource("StyleBoxFlat_7f1lw")
+
+[node name="ConfirmationPopUp" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_smlhd")
+
+[node name="Overlay" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lpytq")
+
+[node name="PopUp" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -225.0
+offset_right = 175.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x75n1")
+
+[node name="Layout" type="VBoxContainer" parent="PopUp"]
+layout_mode = 2
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="Title" type="Label" parent="PopUp/Layout"]
+layout_mode = 2
+theme = SubResource("Theme_h4dws")
+text = "Comprar fulano
+por X moedas?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="CardArea" type="MarginContainer" parent="PopUp/Layout"]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ActionButtons" type="HBoxContainer" parent="PopUp/Layout"]
+layout_mode = 2
+
+[node name="CancelContainer" type="PanelContainer" parent="PopUp/Layout/ActionButtons"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Cancel" type="Button" parent="PopUp/Layout/ActionButtons/CancelContainer"]
+custom_minimum_size = Vector2(190, 70)
+layout_mode = 2
+theme = ExtResource("3_tard4")
+text = "CANCEL"
+
+[node name="BuyContainer" type="PanelContainer" parent="PopUp/Layout/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Buy" type="Button" parent="PopUp/Layout/ActionButtons/BuyContainer"]
+custom_minimum_size = Vector2(190, 70)
+layout_mode = 2
+theme = SubResource("Theme_8dntf")
+text = "BUY"
+
+[connection signal="pressed" from="PopUp/Layout/ActionButtons/CancelContainer/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="PopUp/Layout/ActionButtons/BuyContainer/Buy" to="." method="_on_buy_pressed"]

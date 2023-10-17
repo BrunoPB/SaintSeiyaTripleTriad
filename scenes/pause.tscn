@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://tyudsfs7bbuu"]
+
+[ext_resource type="Script" path="res://scripts/pause.gd" id="1_xy7si"]
+[ext_resource type="Theme" uid="uid://de5fwt1vtmxhx" path="res://themes/overlay.tres" id="2_vvart"]
+[ext_resource type="Theme" uid="uid://j0sxke1q4f1x" path="res://themes/pause_button.tres" id="3_tox6b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8sxa6"]
+bg_color = Color(0, 0.0941176, 0.321569, 0.592157)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 20
+
+[sub_resource type="Theme" id="Theme_a45us"]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 20
+Label/font_sizes/font_size = 40
+
+[node name="Pause" type="CanvasLayer"]
+process_mode = 2
+layer = 2
+script = ExtResource("1_xy7si")
+
+[node name="Overlay" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_vvart")
+
+[node name="Menu" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -225.0
+offset_right = 175.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8sxa6")
+
+[node name="Layout" type="VBoxContainer" parent="Menu"]
+layout_mode = 2
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="Title" type="Label" parent="Menu/Layout"]
+layout_mode = 2
+theme = SubResource("Theme_a45us")
+text = "Game Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeContainer" type="PanelContainer" parent="Menu/Layout"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Resume" type="Button" parent="Menu/Layout/ResumeContainer"]
+custom_minimum_size = Vector2(220, 70)
+layout_mode = 2
+theme = ExtResource("3_tox6b")
+text = "Resume"
+
+[node name="SurrenderContainer" type="PanelContainer" parent="Menu/Layout"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Surrender" type="Button" parent="Menu/Layout/SurrenderContainer"]
+custom_minimum_size = Vector2(220, 70)
+layout_mode = 2
+theme = ExtResource("3_tox6b")
+text = "Surrender"
+
+[connection signal="pressed" from="Menu/Layout/ResumeContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Menu/Layout/SurrenderContainer/Surrender" to="." method="_on_surrender_pressed"]

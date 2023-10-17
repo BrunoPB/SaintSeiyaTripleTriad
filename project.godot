@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Saint Seiya Triple Triad"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://dcs.svg"
 
 [autoload]
 
-Play="*res://scripts/play.gd"
+CardsData="*res://scripts/Cards_Data.gd"
+Player="*res://scripts/Player.gd"
 
 [display]
 
@@ -29,7 +30,6 @@ window/handheld/orientation=1
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
-pointing/emulate_mouse_from_touch=false
 
 [rendering]
 

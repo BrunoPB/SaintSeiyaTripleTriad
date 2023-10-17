@@ -7,7 +7,10 @@ var game_instance = preload("res://scenes/game.tscn").instantiate()
 var slots : Array = getSlots()
 var slotSize : Vector2 = Vector2(slots[0].custom_minimum_size.x,slots[0].custom_minimum_size.y)
 var slotOffset : Vector2 = Vector2(slots[0].custom_minimum_size.x/2,slots[0].custom_minimum_size.y/2)
-@onready var play = get_node("/root/Play")
+var play
+
+func _ready():
+	play = get_node("/root/Game").play
 
 func _process(delta):
 	if dragging and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):

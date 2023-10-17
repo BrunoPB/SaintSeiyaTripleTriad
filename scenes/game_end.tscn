@@ -1,0 +1,191 @@
+[gd_scene load_steps=20 format=3 uid="uid://bcwoch3hvha2"]
+
+[ext_resource type="Script" path="res://scripts/game_end.gd" id="1_pt5a4"]
+[ext_resource type="Theme" uid="uid://de5fwt1vtmxhx" path="res://themes/overlay.tres" id="1_y5ufs"]
+[ext_resource type="Texture2D" uid="uid://cwc3iqpwvg35y" path="res://assets/coins.png" id="2_mu0aw"]
+[ext_resource type="Theme" uid="uid://j0sxke1q4f1x" path="res://themes/pause_button.tres" id="3_cj17f"]
+[ext_resource type="Theme" uid="uid://davhgepsccvh8" path="res://themes/defeat_font.tres" id="3_gpqkq"]
+[ext_resource type="Theme" uid="uid://b3oobpurd2ka1" path="res://themes/score_font_base_theme.tres" id="4_q17fx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xr2rt"]
+bg_color = Color(0, 0, 0, 0.929412)
+
+[sub_resource type="Theme" id="Theme_ssk5f"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_xr2rt")
+
+[sub_resource type="Theme" id="Theme_83wu1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yy6ly"]
+bg_color = Color(0, 0.329412, 0.576471, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Theme" id="Theme_1vpim"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_yy6ly")
+
+[sub_resource type="Theme" id="Theme_5pihb"]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 5
+Label/font_sizes/font_size = 40
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nhg7"]
+atlas = ExtResource("2_mu0aw")
+region = Rect2(0, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2jvk"]
+atlas = ExtResource("2_mu0aw")
+region = Rect2(170, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjg5a"]
+atlas = ExtResource("2_mu0aw")
+region = Rect2(340, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvx7j"]
+atlas = ExtResource("2_mu0aw")
+region = Rect2(510, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_birly"]
+atlas = ExtResource("2_mu0aw")
+region = Rect2(680, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej0fd"]
+atlas = ExtResource("2_mu0aw")
+region = Rect2(850, 0, 170, 170)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lsgnl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nhg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2jvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjg5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvx7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_birly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ej0fd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="GameEnd" type="CanvasLayer"]
+script = ExtResource("1_pt5a4")
+
+[node name="Overlay" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y5ufs")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 530
+
+[node name="TitleContainer" type="MarginContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/margin_top = 60
+
+[node name="Title" type="Label" parent="Layout/TitleContainer"]
+layout_mode = 2
+theme = ExtResource("3_gpqkq")
+text = "DEFEAT"
+horizontal_alignment = 1
+
+[node name="Bottom" type="PanelContainer" parent="Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_ssk5f")
+
+[node name="BottomLayout" type="VBoxContainer" parent="Layout/Bottom"]
+layout_mode = 2
+theme = SubResource("Theme_83wu1")
+alignment = 2
+
+[node name="ScoreContainer" type="MarginContainer" parent="Layout/Bottom/BottomLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScoreLayout" type="HBoxContainer" parent="Layout/Bottom/BottomLayout/ScoreContainer"]
+layout_mode = 2
+theme_override_constants/separation = 65
+alignment = 1
+
+[node name="PlayerScore" type="Label" parent="Layout/Bottom/BottomLayout/ScoreContainer/ScoreLayout"]
+layout_mode = 2
+theme = ExtResource("4_q17fx")
+text = "5"
+
+[node name="x" type="Label" parent="Layout/Bottom/BottomLayout/ScoreContainer/ScoreLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "x"
+
+[node name="OpponentScore" type="Label" parent="Layout/Bottom/BottomLayout/ScoreContainer/ScoreLayout"]
+layout_mode = 2
+theme = ExtResource("4_q17fx")
+text = "4"
+
+[node name="CoinsContainer" type="HBoxContainer" parent="Layout/Bottom/BottomLayout"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Layout/Bottom/BottomLayout/CoinsContainer"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = SubResource("Theme_1vpim")
+
+[node name="NumberOfCoins" type="Label" parent="Layout/Bottom/BottomLayout/CoinsContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_5pihb")
+text = "+ 50"
+vertical_alignment = 1
+
+[node name="CoinsAnim" type="AnimatedSprite2D" parent="Layout/Bottom/BottomLayout/CoinsContainer"]
+process_mode = 2
+position = Vector2(334, 35)
+scale = Vector2(0.364706, 0.352163)
+sprite_frames = SubResource("SpriteFrames_lsgnl")
+frame_progress = 0.663467
+
+[node name="ButtonContainer" type="MarginContainer" parent="Layout/Bottom/BottomLayout"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 23
+
+[node name="OkButton" type="Button" parent="Layout/Bottom/BottomLayout/ButtonContainer"]
+process_mode = 2
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+theme = ExtResource("3_cj17f")
+text = "OK
+"
+
+[connection signal="pressed" from="Layout/Bottom/BottomLayout/ButtonContainer/OkButton" to="." method="_on_ok_button_pressed"]

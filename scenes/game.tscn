@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://c26kphb2cr3fu"]
+[gd_scene load_steps=11 format=3 uid="uid://c26kphb2cr3fu"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_0ihwn"]
 [ext_resource type="Theme" uid="uid://bcasyxd852hjh" path="res://themes/table_slot_free.tres" id="2_47ntc"]
+[ext_resource type="Texture2D" uid="uid://bfxabhlfcfxsk" path="res://assets/pauseIcon.png" id="2_x5ijf"]
 [ext_resource type="Script" path="res://scripts/slot_drop.gd" id="3_87lb1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpd4x"]
@@ -30,7 +31,7 @@ size = Vector2(130, 170)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xo70"]
 size = Vector2(398, 518)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uncyw"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvuru"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 10
 border_width_top = 10
@@ -44,7 +45,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="Theme" id="Theme_aqj2q"]
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_uncyw")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_dvuru")
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -75,8 +76,14 @@ offset_right = 184.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/separation = 25
+theme_override_constants/separation = 8
 alignment = 1
+
+[node name="PauseButton" type="TextureButton" parent="VerticalLayout"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture_normal = ExtResource("2_x5ijf")
 
 [node name="Action" type="Label" parent="VerticalLayout"]
 layout_mode = 2
@@ -213,9 +220,10 @@ theme = SubResource("Theme_aqj2q")
 
 [node name="PlayerTimer" type="Timer" parent="."]
 
-[node name="MessageTimer" type="Timer" parent="."]
+[node name="AuxTimer" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="pressed" from="VerticalLayout/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="mouse_entered" from="VerticalLayout/Table/Slot1/SlotArea" to="VerticalLayout/Table/Slot1" method="_on_slot_area_mouse_entered"]
 [connection signal="mouse_entered" from="VerticalLayout/Table/Slot2/SlotArea" to="VerticalLayout/Table/Slot2" method="_on_slot_area_mouse_entered"]
 [connection signal="mouse_entered" from="VerticalLayout/Table/Slot3/SlotArea" to="VerticalLayout/Table/Slot3" method="_on_slot_area_mouse_entered"]

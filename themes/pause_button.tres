@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://j0sxke1q4f1x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pynxv"]
+bg_color = Color(0.27451, 0.27451, 0.27451, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.909804, 0.792157, 0, 1)
+Button/constants/outline_size = 10
+Button/font_sizes/font_size = 30
+Button/styles/normal = SubResource("StyleBoxFlat_pynxv")
+Button/styles/pressed = SubResource("StyleBoxFlat_pynxv")
